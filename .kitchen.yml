@@ -11,4 +11,4 @@ platforms:
 suites:
   - name: default
     run_list:
-      - recipe[windows::default]
+      - recipe[workstation-windows::default]
