@@ -3,12 +3,12 @@ driver:
   name: vagrant
 
 provisioner:
-  name: chef_zero
+  name: chef_solo
 
 platforms:
-  - name: win10
+  - name: win2012
 
 suites:
-  - name: default
+  - name: setup_test_environment
     run_list:
-      - recipe[workstation-windows::default]
+      - recipe[workstation_windows::setup_test_environment]
