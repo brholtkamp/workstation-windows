@@ -11,8 +11,10 @@ windows_zipfile 'C:/terminus' do
   not_if { !Dir.glob('C:/Windows/Fonts/*Terminus*.*').empty? }
 end
 
-Dir.glob('C:/terminus/**/*.ttf') do |font|
-  windows_font File.basename(font) do
-    source font
+if File.directory? 'C:/terminus' do
+  Dir.glob('C:/terminus/**/*.ttf') do |font|
+    windows_font File.basename(font) do
+      source font
+    end
   end
 end
