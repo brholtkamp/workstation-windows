@@ -1,4 +1,7 @@
-# workstation_windows
+# workstation-windows
 
-TODO: Enter the cookbook description here.
-
+# Recipes
+* workstation-windows::default
+  Installs MSYS2 and a base set of packages
+* workstation-windows::setup_test_environment
+  Installs all necessary applications to run test-kitchen
