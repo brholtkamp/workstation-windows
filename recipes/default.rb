@@ -5,12 +5,14 @@
 # Copyright (c) 2016 Brian Holtkamp, All Rights Reserved.
 
 include_recipe 'chocolatey'
-include_recipe 'mingw::default'
-include_recipe 'workstation-windows::fonts'
+include_recipe 'mingw'
+include_recipe 'workstation-windows::install_terminus_font'
 
-#%w{git tig man vim python ruby zsh make}.each do |gem|
-#  msys2_package gem do
-#    action :upgrade
-#    root 'C:\msys64'
-#  end
-#end
+chocolatey 'chefdk'
+
+%w{git tig man vim python ruby zsh make}.each do |gem|
+  msys2_package gem do
+    action :upgrade
+    root 'C:\msys64'
+  end
+end

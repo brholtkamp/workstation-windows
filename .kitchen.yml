@@ -4,11 +4,6 @@ driver:
 
 provisioner:
   name: chef_solo
-  client_rb:
-    diff_disabled: true
-    add_formatter: min
-    verbose_logging: false
-    log_level: warn
 
 platforms:
   - name: win2012
@@ -16,5 +11,4 @@ platforms:
 suites:
   - name: setup_test_environment
     run_list:
-      #- recipe[workstationwindows::default]
-      - recipe[workstationwindows::setup_test_environment]
+      - recipe[workstation-windows::default]
