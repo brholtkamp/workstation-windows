@@ -7,8 +7,10 @@ provisioner:
 
 platforms:
   - name: win2012
+    transport:
+      name: winrm
 
 suites:
-  - name: setup_test_environment
+  - name: default
     run_list:
-      - recipe[workstation-windows::default]
+      - recipe[workstation-windows]

@@ -2,5 +2,6 @@ source 'https://supermarket.chef.io'
 
 metadata
 
-cookbook 'windows'
+cookbook 'chocolatey'
 cookbook 'mingw'
+cookbook 'windows'
