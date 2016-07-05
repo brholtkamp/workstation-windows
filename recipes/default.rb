@@ -4,11 +4,12 @@
 #
 # Copyright (c) 2016 Brian Holtkamp, All Rights Reserved.
 
-include_recipe 'chocolatey'
 include_recipe 'mingw'
-include_recipe 'workstation-windows::install_terminus_font'
 
-chocolatey 'chefdk'
+chocolatey_package 'chefdk' do
+  action :install
+  ignore_failure true
+end
 
 %w{git tig man vim python ruby zsh make}.each do |gem|
   msys2_package gem do
@@ -16,3 +17,5 @@ chocolatey 'chefdk'
     root 'C:\msys64'
   end
 end
+
+windows_font 'Terminus.ttf'

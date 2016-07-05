@@ -7,7 +7,6 @@ long_description 'A collection of recipes to setup different Windows environment
 version '0.1.2'
 
 depends 'windows'
-depends 'chocolatey'
 depends 'mingw'
 
 issues_url 'https://github.com/brholtkamp/workstation-windows/issues' if respond_to?(:issues_url)
