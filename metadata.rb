@@ -10,6 +10,7 @@ supports 'windows'
 depends 'chocolatey'
 depends 'mingw'
 depends 'windows'
+depends 'workstation-common'
 
 issues_url 'https://github.com/brholtkamp/workstation-windows/issues' if respond_to?(:issues_url)
 source_url 'https://github.com/brholtkamp/workstation-windows' if respond_to?(:source_url)

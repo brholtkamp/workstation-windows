@@ -4,11 +4,16 @@
 #
 # Copyright (c) 2016 Brian Holtkamp, All Rights Reserved.
 
-include_recipe 'chocolatey'
-include_recipe 'mingw'
+# Added this in order to remove the seven-zip call everytime it's run
+::Chef::Recipe.send(:include, Chocolatey::Helpers)
+include_recipe 'chocolatey' unless chocolatey_installed?
+
+# Will install MSYS2 only once
+include_recipe 'mingw' unless ::File.directory?(node['workstation']['msys'])
 
 windows_package 'Chef Development Kit' do
   source 'https://packages.chef.io/stable/windows/2008r2/chefdk-0.15.15-1-x86.msi'
+  not_if { ::File.directory?('C:/opscode/') }
 end
 
 # TODO: Fix this when the package is updated on Chocolatey
@@ -17,11 +22,29 @@ end
 #  ignore_failure true
 #end
 
-%w{git tig man vim python ruby zsh make}.each do |package|
+# Install a baseline set of packages to make MSYS2 useful
+%w(git tig man vim python ruby zsh make).each do |package|
   msys2_package package do
-    action :upgrade
+    action :install
     root node['workstation']['msys']
   end
 end
 
+# Setup the MSYS2 themes
 windows_font 'Terminus.ttf'
+windows_font 'TerminusBold.ttf'
+windows_font 'TerminusItalic.ttf'
+windows_font 'TerminusBoldItalic.ttf'
+
+cookbook_file "#{node['workstation']['home']}/.minttyrc"
+
+# Setup the MSYS2 customizations
+%w(mingw32.ini mingw64.ini msys2.ini).each do |file|
+  cookbook_file "#{node['workstation']['msys']}/#{file}"
+end
+
+node['workstation']['dotfiles'].each do |file|
+  cookbook_file "#{node['workstation']['home']}/#{file}" do
+    cookbook 'workstation-common'
+  end
+end

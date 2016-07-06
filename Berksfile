@@ -1,7 +1,8 @@
 source 'https://supermarket.chef.io'
 
-metadata
-
 cookbook 'chocolatey'
 cookbook 'mingw'
 cookbook 'windows'
+cookbook 'workstation-common', path: '~/repos/workstation-common'
+
+metadata
