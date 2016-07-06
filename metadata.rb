@@ -9,6 +9,7 @@ supports 'windows'
 
 depends 'chocolatey'
 depends 'mingw'
+depends 'vagrant'
 depends 'windows'
 depends 'workstation-common'
 

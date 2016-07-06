@@ -5,11 +5,11 @@
 # Copyright (c) 2016 Brian Holtkamp, All Rights Reserved.
 
 # Added this in order to remove the seven-zip call everytime it's run
-::Chef::Recipe.send(:include, Chocolatey::Helpers)
-include_recipe 'chocolatey' unless chocolatey_installed?
 
-# Will install MSYS2 only once
-include_recipe 'mingw' unless ::File.directory?(node['workstation']['msys'])
+::Chef::Recipe.send(:include, Chocolatey::Helpers)
+
+include_recipe 'chocolatey::default' unless chocolatey_installed?
+include_recipe 'mingw::default' unless ::File.directory?(node['workstation']['msys'])
 
 windows_package 'Chef Development Kit' do
   source 'https://packages.chef.io/stable/windows/2008r2/chefdk-0.15.15-1-x86.msi'
@@ -30,7 +30,7 @@ end
   end
 end
 
-# Setup the MSYS2 themes
+# Setup MSYS2
 windows_font 'Terminus.ttf'
 windows_font 'TerminusBold.ttf'
 windows_font 'TerminusItalic.ttf'
@@ -38,11 +38,11 @@ windows_font 'TerminusBoldItalic.ttf'
 
 cookbook_file "#{node['workstation']['home']}/.minttyrc"
 
-# Setup the MSYS2 customizations
 %w(mingw32.ini mingw64.ini msys2.ini).each do |file|
   cookbook_file "#{node['workstation']['msys']}/#{file}"
 end
 
+# Setup the MSYS2 customizations
 node['workstation']['dotfiles'].each do |file|
   cookbook_file "#{node['workstation']['home']}/#{file}" do
     cookbook 'workstation-common'

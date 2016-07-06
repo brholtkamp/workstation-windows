@@ -6,11 +6,12 @@ provisioner:
   name: chef_solo
 
 platforms:
-  - name: win2012
+  - name: opentable/win-2012r2-standard-amd64-nocm
     transport:
       name: winrm
 
 suites:
-  - name: default
+  - name: all
     run_list:
-      - recipe[workstation-windows]
+      - recipe[workstation-windows::default]
+      - recipe[workstation-windows::setup_test_environment]
