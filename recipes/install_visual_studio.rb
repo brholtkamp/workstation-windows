@@ -15,18 +15,18 @@ node['workstation']['visual_studio']['extensions'].each do |file, url|
   next unless Dir.glob("#{node['workstation']['visual_studio']['extension_dir']}/**/#{file}.*").empty?
 
   # Download the extension
-  remote_file "C:/#{file}.vsix" do
+  remote_file "#{ENV['TEMP']}/#{file}.vsix" do
     source url
     action :create
   end
 
   # Install the extension
-  execute "VSIXInstaller.exe /q C:/#{file}.vsix" do
+  execute "VSIXInstaller.exe /q #{ENV['TEMP']}/#{file}.vsix" do
     cwd node['workstation']['visual_studio']['vsix_installer_dir']
   end
 
   # Clean up the download
-  file "C:/#{file}.vsix" do
+  file "#{ENV['TEMP']}/#{file}.vsix" do
     action :delete
   end
 end
