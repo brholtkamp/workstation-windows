@@ -1,4 +1,9 @@
-default['workstation']['msys'] = 'C:/msys64'
-default['workstation']['user'] = "#{ENV['username']}"
-default['workstation']['home'] = "#{node['workstation']['msys']}/home/#{node['workstation']['user']}"
-default['workstation']['dotfiles'] = ['.zshrc', '.vimrc', '.editorconfig']
+override['workstation']['user'] = ENV['username']
+override['workstation']['home'] = "#{node['msys2']['install_dir']}/home/#{node['workstation']['user']}"
+
+default['workstation']['visual_studio']['extension_dir'] = "#{ENV['LocalAppData'].gsub(/\\+/, '/')}/Microsoft/VisualStudio/14.0/Extensions"
+default['workstation']['visual_studio']['vsix_installer_dir'] = 'C:/Program Files (x86)/Microsoft Visual Studio 14.0/Common7/IDE'
+default['workstation']['visual_studio']['extensions'] = [
+  %w(TabSanity https://visualstudiogallery.msdn.microsoft.com/ac4d4d6b-b017-4a42-8f72-55f0ffe850d7/file/99636/9/TabSanity.vsix),
+  %w(VsVim https://visualstudiogallery.msdn.microsoft.com/59ca71b3-a4a3-46ca-8fe1-0e90e3f79329/file/6390/59/VsVim.vsix)
+]

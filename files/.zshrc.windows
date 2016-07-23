@@ -1,0 +1,15 @@
+# Make sure TMP and TEMP aren't duplicated
+unset tmp
+unset temp
+
+# Choco
+export PATH="$PATH:/c/ProgramData/chocolatey/bin/"
+
+# Chef
+export PATH="$PATH:/c/opscode/chefdk/bin/"
+
+# Vagrant
+export PATH="$PATH:/c/HashiCorp/Vagrant/bin/"
+
+# Virtualbox
+export PATH="$PATH:/c/Program Files/Oracle/VirtualBox/"
