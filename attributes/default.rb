@@ -1,6 +1,12 @@
+# Overrides of workstation-common settings for Windows
 override['workstation']['user'] = ENV['username']
 override['workstation']['home'] = "#{node['msys2']['install_dir']}/home/#{node['workstation']['user']}"
 
+# General settings
+default['workstation']['applications'] = %w(1password ccleaner dropbox googlechrome skype slack)
+default['workstation']['games'] = %w(battle.net steam)
+
+# Visual Studio settings
 default['workstation']['visual_studio']['extension_dir'] = "#{ENV['LocalAppData'].gsub(/\\+/, '/')}/Microsoft/VisualStudio/14.0/Extensions"
 default['workstation']['visual_studio']['vsix_installer_dir'] = 'C:/Program Files (x86)/Microsoft Visual Studio 14.0/Common7/IDE'
 default['workstation']['visual_studio']['extensions'] = [

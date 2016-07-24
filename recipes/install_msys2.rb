@@ -15,7 +15,7 @@ cookbook_file "#{node['workstation']['home']}/.minttyrc"
 cookbook_file "#{node['workstation']['home']}/.zshrc.windows"
 
 %w(mingw32.ini mingw64.ini msys2.ini).each do |file|
-  cookbook_file "#{node['workstation']['msys']}/#{file}"
+  cookbook_file "#{node['msys2']['install_dir']}/#{file}"
 end
 
 # Setup the MSYS2 customizations
