@@ -11,18 +11,16 @@ windows_font 'TerminusBold.ttf'
 windows_font 'TerminusItalic.ttf'
 windows_font 'TerminusBoldItalic.ttf'
 
-cookbook_file "#{node['workstation']['home']}/.minttyrc"
-cookbook_file "#{node['workstation']['home']}/.zshrc.windows"
-
-%w(mingw32.ini mingw64.ini msys2.ini).each do |file|
-  cookbook_file "#{node['msys2']['install_dir']}/#{file}"
+# Install Windows exclusive dotfiles; workstation-common does normal dotfiles
+%w(minttyrc zshrc.windows).each do |file|
+  cookbook_file "#{node['workstation']['home']}/.#{file}" do
+    source file
+  end
 end
 
-# Setup the MSYS2 customizations
-node['workstation']['dotfiles'].each do |file|
-  cookbook_file "#{node['workstation']['home']}/#{file}" do
-    cookbook 'workstation-common'
-  end
+# Make ZSH the main shell on launch
+%w(mingw32.ini mingw64.ini msys2.ini).each do |file|
+  cookbook_file "#{node['msys2']['install_dir']}/#{file}"
 end
 
 # Install common packages

@@ -3,7 +3,7 @@
 # Recipe:: install_visual_studio
 #
 
-%w(visualstudio2015community resharper).each do |package|
+node['workstation']['visual_studio']['packages'].each do |package|
   chocolatey_package package do
     timeout 7200 # Set the timeout high so the installs can complete
     ignore_failure true # Bug with the end of VisualStudio2015Community: undefined method chomp for nil:NilClass

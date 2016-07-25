@@ -1,7 +1,7 @@
 name 'workstation-windows'
 maintainer 'Brian Holtkamp'
 maintainer_email 'brholtkamp@gmail.com'
-license 'all_rights'
+license 'MIT'
 description 'Installs and configures Windows workstations'
 long_description 'A collection of recipes to setup different Windows environments to handle different tasks'
 version '0.1.3'

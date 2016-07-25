@@ -14,4 +14,7 @@ suites:
   - name: all
     run_list:
       - recipe[workstation-windows::default]
+      - recipe[workstation-windows::install_applications]
+      - recipe[workstation-windows::install_games]
+      - recipe[workstation-windows::install_unity]
       - recipe[workstation-windows::setup_test_environment]
