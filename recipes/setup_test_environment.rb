@@ -3,7 +3,7 @@
 # Recipe:: setup_test_environment
 #
 
-include_recipe 'workstation-windows::default'
+include_recipe 'workstation-windows::install_chocolatey'
 
 %w(vagrant packer virtualbox).each do |package|
   chocolatey_package package

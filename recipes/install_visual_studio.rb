@@ -3,6 +3,8 @@
 # Recipe:: install_visual_studio
 #
 
+include_recipe 'workstation-windows::install_chocolatey'
+
 node['workstation']['visual_studio']['packages'].each do |package|
   chocolatey_package package do
     timeout 7200 # Set the timeout high so the installs can complete
