@@ -18,6 +18,9 @@ windows_font 'TerminusBoldItalic.ttf'
   end
 end
 
+# Make sure zsh is intalled
+msys2_package 'zsh'
+
 # Make ZSH the main shell on launch
 %w(mingw32.ini mingw64.ini msys2.ini).each do |file|
   cookbook_file "#{node['msys2']['install_dir']}/#{file}"
@@ -27,3 +30,5 @@ end
 node['workstation']['packages'].each do |package|
   msys2_package package
 end
+
+include_recipe 'workstation-common::install_dotfiles'
