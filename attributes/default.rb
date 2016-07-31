@@ -3,6 +3,7 @@ override['workstation']['user'] = ENV['username']
 override['workstation']['home'] = "#{node['msys2']['install_dir']}/home/#{node['workstation']['user']}"
 
 # General settings
+defualt['workstation']['packages'] += %w(man)
 default['workstation']['applications'] = %w(1password ccleaner dropbox f.lux googlechrome malwarebytes skype slack visualstudiocode)
 default['workstation']['games'] = %w(battle.net steam)
 
