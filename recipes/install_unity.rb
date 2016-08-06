@@ -4,6 +4,7 @@
 #
 
 include_recipe 'workstation-windows::install_chocolatey'
+include_recipe 'workstation-windows::install_visual_studio'
 
 chocolatey_package 'unity' do
   options '-i' # Removes the dotnet3.5 dependency

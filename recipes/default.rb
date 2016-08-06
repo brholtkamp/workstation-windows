@@ -12,8 +12,5 @@ chocolatey_package 'chefdk' do
   ignore_failure true # Added due to the output done by Chocolatey
 end
 
-# Install the dotfiles in the MSYS2 environment
+# Run workstation-common's default
 include_recipe 'workstation-common::default'
-
-# Sets the chef-client service so it can run as a daemon
-include_recipe 'chef-client::default'

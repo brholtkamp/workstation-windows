@@ -11,10 +11,20 @@ platforms:
       name: winrm
 
 suites:
-  - name: all
+  - name: default
     run_list:
       - recipe[workstation-windows::default]
       - recipe[workstation-windows::install_applications]
       - recipe[workstation-windows::install_games]
+      - recipe[workstation-windows::install_visual_studio]
       - recipe[workstation-windows::install_unity]
       - recipe[workstation-windows::setup_test_environment]
+    attributes:
+      workstation:
+        visual_studio:
+          packages: ['visualstudio2015community']
+          extensions: [
+            ['VsVim', 'https://visualstudiogallery.msdn.microsoft.com/59ca71b3-a4a3-46ca-8fe1-0e90e3f79329/file/6390/59/VsVim.vsix']
+          ]
+          extension_dir: 'C:/Users/vagrant/AppData/Local/Microsoft/VisualStudio/14.0/Extensions'
+          vsix_installer_dir: 'C:/Program Files (x86)/Microsoft Visual Studio 14.0/Common7/IDE'

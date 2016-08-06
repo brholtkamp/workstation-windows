@@ -4,6 +4,6 @@ cookbook 'chocolatey'
 cookbook 'msys2'
 cookbook 'vagrant'
 cookbook 'windows'
-cookbook 'workstation-common', path: '~/repos/workstation-common'
+cookbook 'workstation-common', github: 'brholtkamp/workstation-common'
 
 metadata

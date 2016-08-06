@@ -6,7 +6,7 @@ The Windows cookbook that's part of the [workstation-common](https://github.com/
 
 ## Core Recipes
 
-- `default`: Will install [Chocolatey](https://chocolatey.org), [MSYS2](https://msys2.github.io), [ChefDK](https://downloads.chef.io/chef-dk), the dotfiles from workstation-common into the MSYS2 environment, and registers [chef-client](https://github.com/chef-cookbooks/chef-client) as a service to run on the Windows node.
+- `default`: Will install [Chocolatey](https://chocolatey.org), [MSYS2](https://msys2.github.io), [ChefDK](https://downloads.chef.io/chef-dk), and registers [chef-client](https://github.com/chef-cookbooks/chef-client) as a service to run on the Windows node.
 - `install_chocolatey`: Will install Chocolatey.
 - `install_msys2`: Will install MSYS2, some customizations to the MSYS2 environment, and all of the packages from workstation-common.
 
@@ -29,3 +29,7 @@ The Windows cookbook that's part of the [workstation-common](https://github.com/
 - `node['workstation']['visual_studio']['extensions']`: The list of extensions to install in with `install_visual_studio`.  Each item in the list is another list of `['Extension Name', 'URL to .vsix']`.
 - `node['workstation']['visual_studio']['extension_dir']`: The path to where Visual Studio extensions are installed.
 - `node['workstation']['visual_studio']['vsix_installer_dir']`: The path to `VSIXInstaller.exe`
+
+# Notes
+
+This was tested in MSYS2 using the ChefDK tools.  In order to run `berks` and other commands on Windows, I'd use `chef exec ...` in order to accomplish it.
