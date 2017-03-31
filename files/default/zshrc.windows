@@ -13,3 +13,7 @@ export PATH="$PATH:/c/HashiCorp/Vagrant/bin/"
 
 # Virtualbox
 export PATH="$PATH:/c/Program Files/Oracle/VirtualBox/"
+
+# Aliases
+alias ls="ls -G"
+alias ll="ls -laG"
